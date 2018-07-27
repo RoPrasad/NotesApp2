@@ -1,5 +1,7 @@
 package com.wolken.notesapp.Activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +14,6 @@ import android.widget.Toast;
 import com.wolken.notesapp.Adapters.TaskAdapter;
 import com.wolken.notesapp.Models.Task;
 import com.wolken.notesapp.R;
-import com.wolken.notesapp.Utils.AlertDialogFragment;
 import com.wolken.notesapp.Utils.NotesAppDBHelper;
 
 public class AddEditActivity extends AppCompatActivity {
@@ -45,7 +46,34 @@ public class AddEditActivity extends AppCompatActivity {
 
                 Toast.makeText(getApplicationContext(),"Item Clicked",Toast.LENGTH_SHORT).show();
 
+
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(AddEditActivity.this);
+                builder.setMessage("How would you like to proceed?");
+                builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //Delete function to be called
+
+                        //PERFORM DELETE OPERATION ON THE DATABASE SIDE
+
+
+                    }
+                });
+
+                builder.setNegativeButton("Update", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //Update function to be called
+
+                        //PERFORM UPDATE OPERATION ON THE DB
+                    }
+                });
                 //CREATE AN ALERT DIALOGUE OBJECT
+                AlertDialog alert11 = builder.create();
+                alert11.show();
+
+
             }
         });
         mtaskRecyclerView.setAdapter(mAdapter);
